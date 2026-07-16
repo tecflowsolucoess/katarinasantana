@@ -1,0 +1,51 @@
+/* 
+ * DEYSYANE KATARINA - Animations 
+ */
+
+/* Micro-interactions & Glassmorphism */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bg-dark .metric-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 2px;
+    transition: transform 0.4s ease, background 0.4s ease;
+}
+
+.bg-dark .metric-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* Scroll Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Image Hover Effects */
+.values-image, .creator-image, .audience-image, .cta-image {
+    overflow: hidden;
+}
+
+.values-image img, .creator-image img, .audience-image img, .cta-image img, .impact-image img {
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.values-image:hover img, .creator-image:hover img, .audience-image:hover img, .cta-image:hover img, .impact-image:hover img {
+    transform: scale(1.03);
+}

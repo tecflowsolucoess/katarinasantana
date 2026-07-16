@@ -1,0 +1,172 @@
+/* 
+ * DEYSYANE KATARINA - Responsive Styles
+ */
+
+/* Laptops and smaller */
+@media (max-width: 1024px) {
+    :root {
+        --spacing-xxl: 8rem;
+        --spacing-xl: 4rem;
+        --spacing-lg: 3rem;
+    }
+    
+    .title-display {
+        font-size: clamp(3rem, 6vw, 5rem);
+    }
+    
+    .title-section {
+        font-size: clamp(2rem, 4vw, 3rem);
+    }
+    
+    .process-steps {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .process-steps::before {
+        display: none;
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    .title-display {
+        font-size: clamp(2.5rem, 8vw, 3.5rem) !important;
+        word-wrap: normal;
+        hyphens: none;
+    }
+    
+    .title-section {
+        font-size: clamp(1.8rem, 6vw, 2.5rem) !important;
+        line-height: 1.2;
+    }
+
+    .hero-grid, .sobre-wrapper, .values-grid, .creator-grid, .process-grid, .audience-grid, .cta-grid, .video-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .hero-content {
+        order: -1;
+        padding-right: 0 !important;
+        text-align: center;
+        align-items: center;
+        padding-bottom: 0;
+    }
+    
+    .creator-image, .process-image-wrapper, .cta-image-wrapper {
+        order: -1; /* Imagem sempre acima do texto no mobile */
+        min-height: auto;
+        transform: none !important;
+    }
+    
+    .sobre-image-col {
+        min-height: auto;
+        transform: none !important;
+        margin-left: 0 !important;
+    }
+    
+    .values-image img, .creator-image img, .audience-image img, .process-image-wrapper img, .cta-image-wrapper img, .hero-image-col img, .sobre-image-col img {
+        width: 100%;
+        margin-left: 0;
+        position: relative !important;
+        bottom: auto !important;
+        left: auto !important;
+        right: auto !important;
+        transform: none !important;
+        max-height: 60vh;
+        object-position: center;
+    }
+    
+    .sobre-card {
+        box-shadow: none !important;
+        border-radius: var(--radius-lg) !important;
+        padding: var(--spacing-lg) !important;
+    }
+    
+    .blob {
+        display: none !important;
+    }
+    
+    .values-text, .creator-text, .impact-text, .cta-text {
+        padding: 0;
+    }
+    
+    .section-hero, .section-process, .section-cta {
+        overflow: visible !important;
+        min-height: auto !important;
+    }
+    
+    .metrics-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .demographics-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .process-steps {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .portfolio-gallery {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .item-3 {
+        margin-top: 0;
+    }
+
+    .audience-image .phone-mockup {
+        width: 100%;
+        max-width: 300px;
+        height: 600px;
+        position: relative;
+        transform: none !important;
+        left: auto !important;
+        bottom: auto !important;
+        margin: 0 auto;
+        display: block;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3) !important;
+    }
+}
+
+/* Mobile Devices */
+@media (max-width: 480px) {
+    :root {
+        --spacing-xxl: 5rem;
+        --spacing-xl: 3rem;
+        --spacing-md: 1.5rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .process-steps {
+        grid-template-columns: 1fr;
+    }
+    
+    .title-display {
+        font-size: clamp(2rem, 8vw, 2.8rem) !important;
+    }
+    
+    .title-section {
+        font-size: clamp(1.5rem, 6vw, 2rem) !important;
+    }
+
+    .subtitle {
+        font-size: 0.75rem;
+    }
+
+    .btn-primary {
+        width: 100%;
+        text-align: center;
+        font-size: 1rem;
+        padding: 1rem;
+    }
+}

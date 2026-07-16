@@ -1,0 +1,953 @@
+/* ==========================================================================
+   Base & Reset
+   ========================================================================== */
+:root {
+    /* Cores principais baseadas no PDF (Terracota, Marrom Escuro, Bege, Rosé) */
+    --clr-bg-main: #FDFBF7; /* Bege texturizado claro */
+    --clr-bg-card: #F4EBE4; /* Bege um pouco mais escuro para cards */
+    --clr-text-main: #3E2723; /* Marrom bordô escuro */
+    --clr-text-muted: #6B4E44; /* Marrom médio suave */
+    --clr-terracota: #AA6B4E; /* Terracota / Marrom avermelhado quente */
+    --clr-rose: #F1A594; /* Rosé / Pêssego */
+    --clr-rose-light: #FCECE8;
+    --clr-white: #ffffff;
+    
+    /* Tipografia */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+    
+    /* Espaçamentos e Layout */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 8rem;
+    
+    --container-width: 1200px;
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 32px;
+    --radius-blob: 40% 60% 70% 30% / 40% 50% 60% 50%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--clr-text-main);
+    background-color: var(--clr-bg-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    /* Textura de fundo suave imitando aquarela/papel */
+    background-image: 
+        radial-gradient(circle at 15% 20%, rgba(241, 165, 148, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(170, 107, 78, 0.05) 0%, transparent 40%);
+}
+
+/* Textura Global Premium (Ruído/Papel) */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Não atrapalha os cliques */
+    z-index: 9999; /* Fica por cima de tudo unificando a textura */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    opacity: 0.8; /* Intensidade fina */
+}
+
+.container {
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+    position: relative;
+    z-index: 2;
+}
+
+.section-padding {
+    padding: var(--spacing-xl) 0;
+}
+
+.relative {
+    position: relative;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--clr-text-main);
+    font-weight: 500;
+}
+
+.title-display {
+    font-size: clamp(4rem, 8vw, 7rem);
+    line-height: 1.1;
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: -0.02em;
+}
+
+.title-section {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+    position: relative;
+    display: inline-block;
+}
+
+.subtitle {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--clr-terracota);
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 600;
+}
+
+.text-body {
+    font-size: 1.1rem;
+    color: var(--clr-text-muted);
+    font-weight: 300;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mb-4 { margin-bottom: var(--spacing-md); }
+.mb-8 { margin-bottom: var(--spacing-lg); }
+.mt-8 { margin-top: var(--spacing-lg); }
+
+/* ==========================================================================
+   Utilitários e Elementos Comuns
+   ========================================================================== */
+.btn-primary {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background-color: var(--clr-terracota);
+    color: var(--clr-bg-main);
+    text-decoration: none;
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: 1px solid var(--clr-terracota);
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--clr-terracota);
+}
+
+/* A mágica de remover fundos neutros! */
+.blend-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: bottom center;
+}
+
+/* Formas orgânicas decorativas (Blobs) */
+.blob {
+    position: absolute;
+    z-index: 0;
+    border-radius: var(--radius-blob);
+}
+.blob-terracota {
+    background: var(--clr-terracota);
+    opacity: 0.1;
+}
+.blob-rose {
+    background: var(--clr-rose);
+    opacity: 0.15;
+}
+.blob-brown {
+    background: var(--clr-text-main);
+    opacity: 0.05;
+}
+
+/* ==========================================================================
+   Section 1: Hero Editorial
+   ========================================================================== */
+.section-hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    overflow: hidden;
+    padding-top: 10vh;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    gap: var(--spacing-lg);
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-image-col {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+
+.hero-image-col img {
+    max-height: 90vh;
+    width: auto;
+    object-fit: contain;
+    object-position: bottom left;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: var(--spacing-xl);
+    padding-bottom: 4vh; /* Ajustado para descer mais o texto em relação à base */
+}
+
+.hero-roles {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--clr-terracota);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 500;
+    line-height: 1.8;
+}
+
+.hero-desc {
+    margin-top: 1.5rem;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--clr-text-muted);
+}
+
+/* ==========================================================================
+   Section 2: Sobre Mim
+   ========================================================================== */
+.section-sobre {
+    padding: var(--spacing-xl) 0;
+    position: relative;
+    background-color: var(--clr-bg-main);
+    overflow: hidden;
+}
+
+.sobre-wrapper {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 0;
+    align-items: stretch;
+}
+
+.sobre-card {
+    background-color: var(--clr-bg-card);
+    padding: var(--spacing-xl) var(--spacing-lg);
+    border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+    box-shadow: -20px 20px 0 var(--clr-terracota); /* Sombra sólida inspirada no PDF */
+    position: relative;
+    z-index: 2;
+}
+
+.sobre-image-col {
+    position: relative;
+    z-index: 3;
+    margin-left: -5rem; /* Sobrepor o card */
+    display: block; /* Removendo flex para usar absolute child */
+}
+
+.sobre-image-col img {
+    position: absolute;
+    bottom: calc(-1 * var(--spacing-xl)); /* Ancorar matematicamente ao fundo da seção */
+    left: -5%;
+    width: 115%;
+    height: auto;
+    max-height: 200%; /* Permite crescer bastante */
+    object-fit: contain;
+    object-position: bottom center;
+}
+
+/* ==========================================================================
+   Section 3: Portfolio Editorial (A Arte)
+   ========================================================================== */
+.section-portfolio {
+    background-color: var(--clr-bg-main);
+    position: relative;
+}
+
+.portfolio-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: var(--spacing-lg);
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    box-shadow: 0 10px 30px rgba(62, 39, 35, 0.05);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-item.item-2 {
+    margin-top: -3rem; /* Desalinhamento estético */
+}
+
+/* ==========================================================================
+   Section 4: The Impact (Métricas)
+   ========================================================================== */
+.section-impact {
+    background-color: var(--clr-bg-card);
+    position: relative;
+    overflow: hidden;
+}
+
+.impact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: stretch;
+}
+
+.impact-image {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    transform: translateY(calc(var(--spacing-xl) + 5rem)); /* Empurra mais para compensar qualquer margem invisível no PNG */
+}
+
+/* Estilo de ícones circulares do PDF */
+.metrics-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.metric-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.metric-icon {
+    width: 60px;
+    height: 60px;
+    background-color: var(--clr-rose);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--clr-white);
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.metric-text {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    color: var(--clr-text-main);
+    font-weight: 600;
+}
+
+.pill-handle {
+    display: inline-block;
+    background-color: var(--clr-rose);
+    color: var(--clr-text-main);
+    font-family: var(--font-body);
+    font-weight: 600;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    opacity: 0.9;
+}
+
+/* ==========================================================================
+   Section 5: The Audience
+   ========================================================================== */
+.section-audience {
+    position: relative;
+}
+
+.audience-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: var(--spacing-lg);
+    align-items: stretch;
+}
+
+.demographics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.demo-item {
+    background-color: var(--clr-bg-card);
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--clr-terracota);
+}
+
+.demo-item h4 {
+    font-size: 2.5rem;
+    color: var(--clr-terracota);
+    margin-bottom: 0.5rem;
+}
+
+.demo-item p {
+    color: var(--clr-text-muted);
+    font-weight: 500;
+}
+
+.audience-image {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.phone-mockup {
+    position: relative;
+    width: 280px;
+    height: 620px;
+    background-color: #000;
+    border-radius: 40px 40px 0 0;
+    border: 10px solid #1a1a1a;
+    border-bottom: 0;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3), -20px 20px 0 var(--clr-terracota);
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+/* O "notch" (entalhe) da câmera do celular */
+.phone-mockup::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 25px;
+    background-color: #1a1a1a;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    z-index: 10;
+}
+
+.phone-scroll-area {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    background-color: #111;
+    /* Hide scrollbar for a cleaner look */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.phone-scroll-area::-webkit-scrollbar {
+    display: none;
+}
+
+.phone-scroll-area img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: -1px; /* Evita linhas brancas/pretas finas entre as fotos caso as bordas não se toquem perfeitamente */
+}
+
+/* Indicador de rolagem do celular */
+.scroll-hint {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-family: var(--font-body);
+    font-weight: 500;
+    pointer-events: none; /* Para não bloquear o scroll */
+    z-index: 20;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    animation: phone-bounce 2s infinite;
+}
+
+@keyframes phone-bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+.phone-mockup img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    background-color: #111;
+}
+
+/* ==========================================================================
+   Section 6: Expertise (O que podemos criar)
+   ========================================================================== */
+.section-services {
+    background-color: var(--clr-bg-main);
+    position: relative;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.video-item {
+    display: block;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.video-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.video-cover {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9/16; /* Proporção de Reels/TikTok */
+    background-color: var(--clr-terracota);
+    overflow: hidden;
+}
+
+.placeholder-cover {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #a46d5c, #e0b4a6);
+}
+
+.video-cover img, .video-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    pointer-events: none; /* Deixa o clique ir para o link <a> principal */
+}
+
+.video-item:hover .video-cover img,
+.video-item:hover .video-preview {
+    transform: scale(1.05);
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--clr-terracota);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.video-item:hover .play-button {
+    transform: translate(-50%, -50%) scale(1.1);
+    background-color: #fff;
+}
+
+.video-metric {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    z-index: 10;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.video-metric svg {
+    opacity: 0.9;
+}
+
+/* Detalhe do galho/folhas decorativo */
+.leaf-decoration {
+    position: absolute;
+    bottom: -100px;
+    right: -50px;
+    width: 200px;
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   Section 7: The Process
+   ========================================================================== */
+.section-process {
+    background-color: var(--clr-bg-main);
+    position: relative;
+    overflow: hidden;
+}
+
+.process-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.process-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+}
+
+.process-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom center;
+}
+
+.process-steps-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.step-item-vert {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    position: relative;
+}
+
+.step-item-vert::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 50px;
+    bottom: -30px;
+    width: 2px;
+    background-color: rgba(0,0,0,0.05);
+    z-index: 0;
+}
+
+.step-item-vert:last-child::before {
+    display: none;
+}
+
+.step-item-vert .step-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--clr-bg-main);
+    background-color: var(--clr-terracota);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-family: var(--font-display);
+    flex-shrink: 0;
+    z-index: 1;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.step-item-vert .step-text {
+    padding-top: 0.5rem;
+}
+
+.step-item-vert .step-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--clr-text-main);
+}
+
+.step-item-vert .step-desc {
+    font-size: 1.1rem;
+    color: var(--clr-text-muted);
+}
+
+/* ==========================================================================
+   Section 8: The Invitation (Contato)
+   ========================================================================== */
+.section-cta {
+    position: relative;
+    padding: 8rem 0;
+    overflow: hidden;
+    background-color: var(--clr-bg-main);
+}
+
+.cta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    align-items: stretch;
+}
+
+.cta-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    transform: translateY(8rem); /* Desce a imagem pelo valor exato do padding da seção */
+}
+
+.cta-blob {
+    position: absolute;
+    width: 80%;
+    height: 100%;
+    background-color: var(--clr-text-main);
+    border-radius: var(--radius-blob);
+    z-index: 1;
+}
+
+.cta-image-wrapper img {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    transform-origin: bottom center;
+}
+
+.contact-info {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    background-color: var(--clr-rose);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--clr-bg-main);
+}
+
+a.contact-item {
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+a.contact-item:hover {
+    transform: translateX(10px);
+}
+
+.contact-item span {
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    color: var(--clr-text-main);
+}
+
+a.pill-handle {
+    text-decoration: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+a.pill-handle:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* ==========================================================================
+   Floating Action Buttons (WhatsApp e Instagram)
+   ========================================================================== */
+.floating-buttons {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+}
+
+.float-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--clr-bg-card);
+    color: var(--clr-terracota);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    text-decoration: none;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.float-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.float-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.float-ig:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: #fff;
+    border-color: transparent;
+}
+
+.float-wa:hover {
+    background-color: #25D366;
+    color: #fff;
+    border-color: transparent;
+}
+
+/* ==========================================================================
+   Desktop Image Anchoring (Perfect Bottom Alignment)
+   ========================================================================== */
+@media (min-width: 769px) {
+    .impact-image {
+        display: block !important;
+        transform: none !important;
+        position: relative;
+    }
+    
+    .impact-image img {
+        position: absolute;
+        bottom: calc(-1 * var(--spacing-xl));
+        left: -15%;
+        width: 130%;
+        max-height: 180%;
+        object-fit: contain;
+        object-position: bottom center;
+    }
+
+    .cta-image-wrapper {
+        display: block !important;
+        transform: none !important;
+        position: relative;
+    }
+    
+    .cta-image-wrapper img {
+        position: absolute;
+        bottom: -8rem;
+        left: -7.5%;
+        width: 115%;
+        max-height: 180%;
+        object-fit: contain;
+        object-position: bottom center;
+    }
+
+    .audience-image {
+        display: block !important;
+        transform: none !important;
+        position: relative;
+    }
+    
+    .audience-image .phone-mockup {
+        position: absolute;
+        bottom: calc(-1 * var(--spacing-xl));
+        left: 50%;
+        transform: translateX(-50%);
+        width: 300px;
+        height: 650px;
+    }
+
+    .process-content {
+        order: -1;
+    }
+
+    .process-image-wrapper {
+        display: block !important;
+        transform: none !important;
+        position: static !important;
+    }
+    
+    .process-image-wrapper img {
+        position: absolute;
+        bottom: calc(-1 * var(--spacing-xl));
+        right: 5%;
+        left: auto;
+        width: 52%;
+        height: 120%;
+        max-height: 150%;
+        object-fit: contain;
+        object-position: bottom center;
+        z-index: 0;
+    }
+}
