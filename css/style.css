@@ -499,17 +499,16 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: column;
     align-items: center;
     gap: 5px;
-    color: rgba(255, 255, 255, 0.9);
-    background-color: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    padding: 8px 16px;
-    border-radius: 20px;
+    color: #fff;
+    background-color: var(--clr-terracota);
+    box-shadow: 0 4px 15px rgba(192, 92, 64, 0.4);
+    padding: 12px 24px;
+    border-radius: 30px;
     font-size: 0.85rem;
     font-family: var(--font-body);
     font-weight: 500;
     pointer-events: none; /* Para não bloquear o scroll */
-    z-index: 20;
+    z-index: 999;
     transition: opacity 0.3s ease, visibility 0.3s ease;
     animation: phone-bounce 2s infinite;
 }
