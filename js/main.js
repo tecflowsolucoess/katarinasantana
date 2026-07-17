@@ -45,15 +45,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrollHint = document.getElementById('scrollHint');
     
     if (phoneScrollArea && scrollHint) {
-        phoneScrollArea.addEventListener('scroll', () => {
-            // Se rolar mais de 20px para baixo, esconde o indicador
-            if (phoneScrollArea.scrollTop > 20) {
-                scrollHint.style.opacity = '0';
-                scrollHint.style.visibility = 'hidden';
-            } else {
-                scrollHint.style.opacity = '1';
-                scrollHint.style.visibility = 'visible';
-            }
-        });
+        // Atrasa a leitura do scroll para evitar que o carregamento da página esconda o botão sem querer
+        setTimeout(() => {
+            phoneScrollArea.addEventListener('scroll', () => {
+                // Se rolar mais de 80px para baixo, esconde o indicador
+                if (phoneScrollArea.scrollTop > 80) {
+                    scrollHint.style.opacity = '0';
+                    scrollHint.style.visibility = 'hidden';
+                } else {
+                    scrollHint.style.opacity = '1';
+                    scrollHint.style.visibility = 'visible';
+                }
+            });
+        }, 1000);
     }
 });
