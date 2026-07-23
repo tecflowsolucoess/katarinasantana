@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tecflowsolucoess.github.io/katarinasantana/sitemap.xml
