@@ -2,13 +2,13 @@
    Base & Reset
    ========================================================================== */
 :root {
-    /* Cores principais baseadas no PDF (Terracota, Marrom Escuro, Bege, Rosé) */
+    /* Cores principais baseadas no PDF (Terracota, Marrom Escuro, Bege, RosÃ©) */
     --clr-bg-main: #FDFBF7; /* Bege texturizado claro */
     --clr-bg-card: #F4EBE4; /* Bege um pouco mais escuro para cards */
-    --clr-text-main: #3E2723; /* Marrom bordô escuro */
-    --clr-text-muted: #6B4E44; /* Marrom médio suave */
+    --clr-text-main: #3E2723; /* Marrom bordÃ´ escuro */
+    --clr-text-muted: #6B4E44; /* Marrom mÃ©dio suave */
     --clr-terracota: #AA6B4E; /* Terracota / Marrom avermelhado quente */
-    --clr-rose: #F1A594; /* Rosé / Pêssego */
+    --clr-rose: #F1A594; /* RosÃ© / PÃªssego */
     --clr-rose-light: #FCECE8;
     --clr-white: #ffffff;
     
@@ -16,7 +16,7 @@
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Inter', sans-serif;
     
-    /* Espaçamentos e Layout */
+    /* EspaÃ§amentos e Layout */
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
     --spacing-md: 2rem;
@@ -49,7 +49,7 @@ body {
         radial-gradient(circle at 85% 80%, rgba(170, 107, 78, 0.05) 0%, transparent 40%);
 }
 
-/* Textura Global Premium (Ruído/Papel) */
+/* Textura Global Premium (RuÃ­do/Papel) */
 body::after {
     content: '';
     position: fixed;
@@ -57,7 +57,7 @@ body::after {
     left: 0;
     width: 100vw;
     height: 100vh;
-    pointer-events: none; /* Não atrapalha os cliques */
+    pointer-events: none; /* NÃ£o atrapalha os cliques */
     z-index: 9999; /* Fica por cima de tudo unificando a textura */
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
     opacity: 0.8; /* Intensidade fina */
@@ -130,7 +130,7 @@ h1, h2, h3, h4, h5, h6 {
 .mt-8 { margin-top: var(--spacing-lg); }
 
 /* ==========================================================================
-   Utilitários e Elementos Comuns
+   UtilitÃ¡rios e Elementos Comuns
    ========================================================================== */
 .btn-primary {
     display: inline-block;
@@ -152,7 +152,7 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--clr-terracota);
 }
 
-/* A mágica de remover fundos neutros! */
+/* A mÃ¡gica de remover fundos neutros! */
 .blend-image {
     display: block;
     width: 100%;
@@ -161,7 +161,7 @@ h1, h2, h3, h4, h5, h6 {
     object-position: bottom center;
 }
 
-/* Formas orgânicas decorativas (Blobs) */
+/* Formas orgÃ¢nicas decorativas (Blobs) */
 .blob {
     position: absolute;
     z-index: 0;
@@ -221,7 +221,7 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: column;
     justify-content: center;
     padding-right: var(--spacing-xl);
-    padding-bottom: 4vh; /* Ajustado para descer mais o texto em relação à base */
+    padding-bottom: 4vh; /* Ajustado para descer mais o texto em relaÃ§Ã£o Ã  base */
 }
 
 .hero-roles {
@@ -262,7 +262,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: var(--clr-bg-card);
     padding: var(--spacing-xl) var(--spacing-lg);
     border-radius: var(--radius-lg) 0 0 var(--radius-lg);
-    box-shadow: -20px 20px 0 var(--clr-terracota); /* Sombra sólida inspirada no PDF */
+    box-shadow: -20px 20px 0 var(--clr-terracota); /* Sombra sÃ³lida inspirada no PDF */
     position: relative;
     z-index: 2;
 }
@@ -276,13 +276,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .sobre-image-col img {
     position: absolute;
-    bottom: calc(-1 * var(--spacing-xl)); /* Ancorar matematicamente ao fundo da seção */
-    left: -5%;
-    width: 115%;
+    top: calc(-1 * var(--spacing-lg));   /* Começa acima da seção — entrando pelo topo */
+    right: -5%;                          /* Ligeiramente fora à direita, como se caminhasse para dentro */
+    left: auto;
+    width: 110%;
     height: auto;
-    max-height: 200%; /* Permite crescer bastante */
+    max-height: 230%;
     object-fit: contain;
-    object-position: bottom center;
+    object-position: top right;          /* Mostra da cabeça para baixo */
 }
 
 /* ==========================================================================
@@ -320,11 +321,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .gallery-item.item-2 {
-    margin-top: -3rem; /* Desalinhamento estético */
+    margin-top: -3rem; /* Desalinhamento estÃ©tico */
 }
 
 /* ==========================================================================
-   Section 4: The Impact (Métricas)
+   Section 4: The Impact (MÃ©tricas)
    ========================================================================== */
 .section-impact {
     background-color: var(--clr-bg-card);
@@ -343,10 +344,10 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     display: flex;
     align-items: flex-end;
-    transform: translateY(calc(var(--spacing-xl) + 5rem)); /* Empurra mais para compensar qualquer margem invisível no PNG */
+    transform: translateY(calc(var(--spacing-xl) + 5rem)); /* Empurra mais para compensar qualquer margem invisÃ­vel no PNG */
 }
 
-/* Estilo de ícones circulares do PDF */
+/* Estilo de Ã­cones circulares do PDF */
 .metrics-list {
     display: flex;
     flex-direction: column;
@@ -452,7 +453,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0 auto;
 }
 
-/* O "notch" (entalhe) da câmera do celular */
+/* O "notch" (entalhe) da cÃ¢mera do celular */
 .phone-mockup::before {
     content: '';
     position: absolute;
@@ -473,7 +474,9 @@ h1, h2, h3, h4, h5, h6 {
     overflow-y: auto;
     overflow-x: hidden;
     scroll-behavior: smooth;
-    background-color: #111;
+    background-color: #000;
+    padding-top: 32px; /* Espaço para o notch da câmera não cobrir o topo da 1ª imagem */
+    padding-bottom: 60px; /* Espaço para a base da última foto não ficar cortada */
     /* Hide scrollbar for a cleaner look */
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -487,7 +490,12 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     height: auto;
     display: block;
-    margin-bottom: -1px; /* Evita linhas brancas/pretas finas entre as fotos caso as bordas não se toquem perfeitamente */
+    object-fit: contain;
+    margin-bottom: 10px; /* Separação limpa entre cada tela de métrica */
+}
+
+.phone-scroll-area img:last-child {
+    margin-bottom: 0;
 }
 
 /* Indicador de rolagem do celular */
@@ -508,7 +516,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.85rem;
     font-family: var(--font-body);
     font-weight: 500;
-    pointer-events: none; /* Para não bloquear o scroll */
+    pointer-events: none; /* Para nÃ£o bloquear o scroll */
     z-index: 999;
     transition: opacity 0.3s ease, visibility 0.3s ease;
     animation: phone-bounce 2s infinite;
@@ -526,12 +534,12 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-.phone-mockup img {
+.phone-scroll-area img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top center;
-    background-color: #111;
+    height: auto !important;
+    object-fit: contain !important;
+    display: block;
+    margin-bottom: 10px;
 }
 
 /* ==========================================================================
@@ -566,7 +574,7 @@ h1, h2, h3, h4, h5, h6 {
 .video-cover {
     position: relative;
     width: 100%;
-    aspect-ratio: 9/16; /* Proporção de Reels/TikTok */
+    aspect-ratio: 9/16; /* ProporÃ§Ã£o de Reels/TikTok */
     background-color: var(--clr-terracota);
     overflow: hidden;
 }
@@ -759,7 +767,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    transform: translateY(8rem); /* Desce a imagem pelo valor exato do padding da seção */
+    transform: translateY(8rem); /* Desce a imagem pelo valor exato do padding da seÃ§Ã£o */
 }
 
 .cta-blob {
@@ -952,7 +960,7 @@ a.pill-handle:hover {
     }
 }
 
-/* Acessibilidade e SEO Invis�vel */
+/* Acessibilidade e SEO Invisível */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -964,3 +972,226 @@ a.pill-handle:hover {
     white-space: nowrap;
     border-width: 0;
 }
+
+/* ==========================================================================
+   Section Brands & Modal
+   ========================================================================== */
+
+.section-brands {
+    background-color: var(--clr-bg-main);
+    position: relative;
+    overflow: hidden;
+}
+
+.brands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand-item {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 16/9;
+}
+
+.brand-logo-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.4s ease;
+}
+
+.brand-logo {
+    width: 100%;
+    max-height: 100px;
+    object-fit: contain;
+    filter: grayscale(100%) opacity(1);
+    transition: all 0.4s ease;
+    transform: scale(1.15);
+}
+
+.brand-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.brand-item:hover .brand-logo-container {
+    transform: scale(1.05);
+}
+
+.brand-item:hover .brand-logo {
+    filter: grayscale(0%) opacity(1);
+}
+
+.brand-hover-overlay {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    transition: bottom 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.brand-item:hover .brand-hover-overlay {
+    bottom: 0;
+}
+
+.brand-hover-overlay span {
+    font-family: var(--font-secondary);
+    font-size: 1.25rem;
+    font-style: italic;
+}
+
+/* Modal Brands */
+.custom-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.custom-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.modal-content-wrapper {
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+    background: var(--clr-bg-main);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    transform: translateY(20px) scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.custom-modal.active .modal-content-wrapper {
+    transform: translateY(0) scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(0,0,0,0.05);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    z-index: 10;
+}
+
+.modal-close:hover {
+    background: rgba(0,0,0,0.1);
+    transform: rotate(90deg);
+}
+
+.modal-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.modal-header h3 {
+    font-family: var(--font-secondary);
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    margin-bottom: 0.5rem;
+}
+
+.modal-header p {
+    color: var(--clr-text-light);
+    font-family: var(--font-primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.875rem;
+}
+
+.modal-videos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.modal-video-box {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    aspect-ratio: 9/16;
+}
+
+.modal-video-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    .modal-content-wrapper {
+        padding: 2rem 1.5rem;
+    }
+    .modal-videos-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .modal-video-box {
+        max-height: 60vh;
+    }
+}
+
+

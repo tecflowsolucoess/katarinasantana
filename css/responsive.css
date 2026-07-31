@@ -69,6 +69,7 @@
         width: 100%;
         margin-left: 0;
         position: relative !important;
+        top: auto !important;
         bottom: auto !important;
         left: auto !important;
         right: auto !important;
