@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tecflowsolucoess.github.io/katarinasantana/sitemap.xml
+Sitemap: https://katarinasantana.com.br/sitemap.xml
