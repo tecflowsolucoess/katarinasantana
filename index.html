@@ -109,19 +109,19 @@
                         
                         <div class="demographics-grid">
                             <div class="demo-item">
-                                <h4>91,4%</h4>
+                                <h4>94,3%</h4>
                                 <p>Feminino</p>
                             </div>
                             <div class="demo-item">
-                                <h4>66,5K</h4>
+                                <h4>114,5K</h4>
                                 <p>Visualizações / Mês</p>
                             </div>
                             <div class="demo-item">
-                                <h4>97,5%</h4>
+                                <h4>96,9%</h4>
                                 <p>Público no Brasil</p>
                             </div>
                             <div class="demo-item">
-                                <h4>+149,8%</h4>
+                                <h4>+20,7%</h4>
                                 <p>Crescimento de Seguidores</p>
                             </div>
                         </div>
@@ -130,12 +130,15 @@
                     <div class="audience-image">
                         <div class="phone-mockup">
                             <div class="phone-scroll-area">
-                                <img src="assets/images/NOVAS METRICAS 3/01.webp" alt="Métricas do Instagram 1" loading="lazy">
-                                <img src="assets/images/NOVAS METRICAS 3/02.webp" alt="Métricas do Instagram 2" loading="lazy">
-                                <img src="assets/images/NOVAS METRICAS 3/03.webp" alt="Métricas do Instagram 3" loading="lazy">
-                                <img src="assets/images/NOVAS METRICAS 3/04.webp" alt="Métricas do Instagram 4" loading="lazy">
-                                <img src="assets/images/NOVAS METRICAS 3/05.webp" alt="Métricas do Instagram 5" loading="lazy">
-                                <img src="assets/images/NOVAS METRICAS 3/06.webp" alt="Métricas do Instagram 6" loading="lazy">
+                                <img src="assets/images/metricas 4/01.webp" alt="Métricas do Instagram 1 - Perfil" loading="lazy">
+                                <img src="assets/images/metricas 4/02.webp" alt="Métricas do Instagram 2 - Painel Profissional" loading="lazy">
+                                <img src="assets/images/metricas 4/03.webp" alt="Métricas do Instagram 3 - Visão Geral" loading="lazy">
+                                <img src="assets/images/metricas 4/04.webp" alt="Métricas do Instagram 4 - Visualizações e Conteúdos" loading="lazy">
+                                <img src="assets/images/metricas 4/05.webp" alt="Métricas do Instagram 5 - Interações do Perfil" loading="lazy">
+                                <img src="assets/images/metricas 4/06.webp" alt="Métricas do Instagram 6 - Seguidores e Gênero" loading="lazy">
+                                <img src="assets/images/metricas 4/07.webp" alt="Métricas do Instagram 7 - Faixa Etária e Localização" loading="lazy">
+                                <img src="assets/images/metricas 4/08.webp" alt="Métricas do Instagram 8 - Principais Cidades" loading="lazy">
+                                <img src="assets/images/metricas 4/09.webp" alt="Métricas do Instagram 9 - Horários de Atividade" loading="lazy">
                             </div>
                         </div>
                         <div class="scroll-hint" id="scrollHint">
@@ -156,15 +159,24 @@
                     <span class="subtitle">05 — Portfólio</span>
                     <h2 class="title-section">Criatividade em Ação</h2>
                 </div>
+
+                <!-- Filtros por Categoria -->
+                <div class="video-categories-filter">
+                    <button type="button" class="video-filter-btn active" data-filter="all">Todos</button>
+                    <button type="button" class="video-filter-btn" data-filter="lifestyle">Lifestyle & Reviews</button>
+                    <button type="button" class="video-filter-btn" data-filter="moda">Moda</button>
+                    <button type="button" class="video-filter-btn" data-filter="beleza">Beleza (Makes)</button>
+                </div>
                 
-                <div class="video-grid mt-8">
-                    <!-- Video 1 -->
-                    <a href="https://www.instagram.com/reel/DZqTfoDMDBE/" target="_blank" rel="noopener noreferrer" class="video-item" id="video1">
+                <div class="video-grid">
+                    <!-- Lifestyle 1 -->
+                    <a href="https://www.instagram.com/reel/Ddtx8dws-pl/" target="_blank" rel="noopener noreferrer" class="video-item" data-category="lifestyle" id="video_lifestyle_1">
                         <div class="video-cover">
-                            <video src="assets/videos/VIDEO 1/video.mp4" poster="assets/videos/VIDEO 1/poster.webp" loop muted playsinline preload="none" class="video-preview"></video>
+                            <span class="video-category-tag">Lifestyle</span>
+                            <video src="assets/videos/LIFESTYLE 1/video.mp4" poster="assets/videos/LIFESTYLE 1/poster.webp" loop muted playsinline preload="none" class="video-preview"></video>
                             <div class="video-metric">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                                <span>2.808 Views</span>
+                                <span>10,3K Views</span>
                             </div>
                             <div class="play-button">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -172,13 +184,14 @@
                         </div>
                     </a>
                     
-                    <!-- Video 2 -->
-                    <a href="https://www.instagram.com/reel/DZ8UK_6MDqi/" target="_blank" rel="noopener noreferrer" class="video-item" id="video2">
+                    <!-- Lifestyle 2 -->
+                    <a href="https://www.instagram.com/reel/DdJ1GYVMNGf/" target="_blank" rel="noopener noreferrer" class="video-item" data-category="lifestyle" id="video_lifestyle_2">
                         <div class="video-cover">
-                            <video src="assets/videos/VIDEO 2/video.mp4" poster="assets/videos/VIDEO 2/poster.webp" loop muted playsinline preload="none" class="video-preview"></video>
+                            <span class="video-category-tag">Lifestyle</span>
+                            <video src="assets/videos/LIFESTYLE 2/video.mp4" poster="assets/videos/LIFESTYLE 2/poster.webp" loop muted playsinline preload="none" class="video-preview"></video>
                             <div class="video-metric">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                                <span>1.189 Views</span>
+                                <span>8,2K Views</span>
                             </div>
                             <div class="play-button">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -186,13 +199,14 @@
                         </div>
                     </a>
                     
-                    <!-- Video 3 -->
-                    <a href="https://www.instagram.com/reel/DaJM4aHMTYI/" target="_blank" rel="noopener noreferrer" class="video-item" id="video3">
+                    <!-- Moda 1 -->
+                    <a href="https://www.instagram.com/reel/DeFFiU1Mlp3/" target="_blank" rel="noopener noreferrer" class="video-item" data-category="moda" id="video_moda_1">
                         <div class="video-cover">
-                            <video src="assets/videos/VIDEO 3/video novo.mp4" poster="assets/videos/VIDEO 3/poster.webp" loop muted playsinline preload="none" class="video-preview"></video>
+                            <span class="video-category-tag">Moda</span>
+                            <video src="assets/videos/MODA 1/video.mp4" poster="assets/videos/MODA 1/poster.webp" loop muted playsinline preload="none" class="video-preview"></video>
                             <div class="video-metric">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                                <span>4.549 Views</span>
+                                <span>900 Views</span>
                             </div>
                             <div class="play-button">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -200,13 +214,44 @@
                         </div>
                     </a>
                     
-                    <!-- Video 4 -->
-                    <a href="https://www.instagram.com/reel/DZBXLuNM38G/" target="_blank" rel="noopener noreferrer" class="video-item" id="video4">
+                    <!-- Moda 2 -->
+                    <a href="https://www.instagram.com/reel/Dcblg5csuNy/" target="_blank" rel="noopener noreferrer" class="video-item" data-category="moda" id="video_moda_2">
                         <div class="video-cover">
-                            <video src="assets/videos/VIDEO 4/video.mp4" poster="assets/videos/VIDEO 4/poster.webp" loop muted playsinline preload="none" class="video-preview"></video>
+                            <span class="video-category-tag">Moda</span>
+                            <video src="assets/videos/MODA 2/video.mp4" poster="assets/videos/MODA 2/poster.webp" loop muted playsinline preload="none" class="video-preview"></video>
                             <div class="video-metric">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                                <span>1.623 Views</span>
+                                <span>3,5K Views</span>
+                            </div>
+                            <div class="play-button">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Beleza 1 -->
+                    <a href="https://www.instagram.com/reel/Ddjn0jeMHHy/" target="_blank" rel="noopener noreferrer" class="video-item" data-category="beleza" id="video_beleza_1">
+                        <div class="video-cover">
+                            <span class="video-category-tag">Beleza</span>
+                            <video src="assets/videos/BELEZA 1/video.mp4" poster="assets/videos/BELEZA 1/poster.webp" loop muted playsinline preload="none" class="video-preview"></video>
+                            <div class="video-metric">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                <span>2,8K Views</span>
+                            </div>
+                            <div class="play-button">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Beleza 2 -->
+                    <a href="https://www.instagram.com/reel/DcrFepaM_Fv/" target="_blank" rel="noopener noreferrer" class="video-item" data-category="beleza" id="video_beleza_2">
+                        <div class="video-cover">
+                            <span class="video-category-tag">Beleza</span>
+                            <video src="assets/videos/BELEZA 2/video.mp4" poster="assets/videos/BELEZA 2/poster.webp" loop muted playsinline preload="none" class="video-preview"></video>
+                            <div class="video-metric">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                <span>1,2K Views</span>
                             </div>
                             <div class="play-button">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>

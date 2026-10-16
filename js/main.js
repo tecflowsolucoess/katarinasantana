@@ -122,20 +122,80 @@ document.addEventListener("keydown", function(event) {
 
 
 
-/* Video Intersection Observer */
+/* Video Performance & Category Filter */
 document.addEventListener('DOMContentLoaded', () => {
-    const videos = document.querySelectorAll('.video-preview');
+    const videoItems = document.querySelectorAll('.video-item');
+    const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    // Em dispositivos com mouse (Desktop): play instantâneo no hover (economiza GPU e CPU no scroll)
+    if (hasHover) {
+        videoItems.forEach(item => {
+            const video = item.querySelector('.video-preview');
+            if (!video) return;
+
+            item.addEventListener('mouseenter', () => {
+                if (!item.classList.contains('is-hidden')) {
+                    video.play().catch(() => {});
+                }
+            });
+
+            item.addEventListener('mouseleave', () => {
+                video.pause();
+            });
+        });
+    }
+
+    // Intersection Observer leve (apenas para mobile ou para pausar fora da tela)
     const videoObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.play().catch(e => console.log('Autoplay prevented:', e));
+            const video = entry.target;
+            const parent = video.closest('.video-item');
+            if (entry.isIntersecting && parent && !parent.classList.contains('is-hidden')) {
+                if (!hasHover) {
+                    // Mobile: toca apenas se tiver 50%+ visível
+                    video.play().catch(() => {});
+                }
             } else {
-                entry.target.pause();
+                video.pause();
             }
         });
-    }, { threshold: 0.2 });
-    
-    videos.forEach(video => {
-        videoObserver.observe(video);
+    }, { threshold: hasHover ? 0.1 : 0.6 });
+
+    document.querySelectorAll('.video-preview').forEach(v => videoObserver.observe(v));
+
+    // Filtros de Categoria (Lifestyle, Moda, Beleza)
+    const filterButtons = document.querySelectorAll('.video-filter-btn');
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filter = btn.getAttribute('data-filter');
+
+            // Atualiza estado ativo dos botões
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Filtra os itens
+            videoItems.forEach(item => {
+                const category = item.getAttribute('data-category');
+                const videoEl = item.querySelector('video');
+
+                if (filter === 'all' || category === filter) {
+                    item.classList.remove('is-hidden');
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.95)';
+                    
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
+                    }, 50);
+                } else {
+                    item.classList.add('is-hidden');
+                    if (videoEl) {
+                        videoEl.pause();
+                    }
+                }
+            });
+        });
     });
 });
+
