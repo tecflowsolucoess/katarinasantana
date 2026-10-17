@@ -137,6 +137,9 @@ function toggleMuteCasaNaArvoreVideo() {
     const btn = document.getElementById("unmuteCasaNaArvoreBtn");
     if(v && btn) {
         v.muted = !v.muted;
+        if (!v.muted) {
+            v.volume = 1.0;
+        }
         btn.textContent = v.muted ? "Ativar Som" : "Desativar Som";
     }
 }
@@ -165,6 +168,9 @@ function toggleMuteRanchoNavarroVideo() {
     const btn = document.getElementById("unmuteRanchoNavarroBtn");
     if(v && btn) {
         v.muted = !v.muted;
+        if (!v.muted) {
+            v.volume = 1.0;
+        }
         btn.textContent = v.muted ? "Ativar Som" : "Desativar Som";
     }
 }
