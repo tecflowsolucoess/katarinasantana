@@ -113,10 +113,68 @@ function toggleMuteFentyVideos() {
     }
 }
 
-// Fechar modal ao pressionar ESC
+/* Modal Casa na Árvore */
+function openCasaNaArvoreModal() {
+    const modal = document.getElementById("casaNaArvoreModal");
+    if(modal) {
+        modal.classList.add("active");
+        const v = document.getElementById("casaNaArvoreVideo");
+        if(v) { v.play(); }
+    }
+}
+
+function closeCasaNaArvoreModal() {
+    const modal = document.getElementById("casaNaArvoreModal");
+    if(modal) {
+        modal.classList.remove("active");
+        const v = document.getElementById("casaNaArvoreVideo");
+        if(v) { v.pause(); v.currentTime = 0; }
+    }
+}
+
+function toggleMuteCasaNaArvoreVideo() {
+    const v = document.getElementById("casaNaArvoreVideo");
+    const btn = document.getElementById("unmuteCasaNaArvoreBtn");
+    if(v && btn) {
+        v.muted = !v.muted;
+        btn.textContent = v.muted ? "Ativar Som" : "Desativar Som";
+    }
+}
+
+/* Modal Rancho Navarro */
+function openRanchoNavarroModal() {
+    const modal = document.getElementById("ranchoNavarroModal");
+    if(modal) {
+        modal.classList.add("active");
+        const v = document.getElementById("ranchoNavarroVideo");
+        if(v) { v.play(); }
+    }
+}
+
+function closeRanchoNavarroModal() {
+    const modal = document.getElementById("ranchoNavarroModal");
+    if(modal) {
+        modal.classList.remove("active");
+        const v = document.getElementById("ranchoNavarroVideo");
+        if(v) { v.pause(); v.currentTime = 0; }
+    }
+}
+
+function toggleMuteRanchoNavarroVideo() {
+    const v = document.getElementById("ranchoNavarroVideo");
+    const btn = document.getElementById("unmuteRanchoNavarroBtn");
+    if(v && btn) {
+        v.muted = !v.muted;
+        btn.textContent = v.muted ? "Ativar Som" : "Desativar Som";
+    }
+}
+
+// Fechar modais ao pressionar ESC
 document.addEventListener("keydown", function(event) {
     if (event.key === "Escape") {
         closeFentyModal();
+        closeCasaNaArvoreModal();
+        closeRanchoNavarroModal();
     }
 });
 
